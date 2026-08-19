@@ -1,0 +1,16 @@
+{
+  "name": "meal-palnner",
+  "version": "1.0.0",
+  "description": "献立を決めるアプリケーションです。",
+  "main": "src/app.js",
+  "license": "MIT",
+  "author": "japonika",
+  "private": true,
+    "scripts": {
+    "start": "NODE_ENV=\"development\" node --watch src/server.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.2",
+    "hono": "^4.7.10"
+  }
+}
