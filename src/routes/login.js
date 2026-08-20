@@ -1,0 +1,28 @@
+const { Hono } = require('hono');
+const { html } = require('hono/html');
+const { setCookie } = require('hono/cookie');
+const layout = require('../layout');
+
+const app = new Hono();
+
+app.get('/', (c) => {
+    const from = c.req.query('from');
+  if (from) {
+    setCookie(c, 'loginFrom', from, { maxAge: 1000 * 60 * 10 });
+  }
+  return c.html(
+    layout(
+      c,
+      'Login',
+      html`
+        <h1>Login</h1>
+        <a href="/auth/github">GitHub でログイン</a>
+        ${user
+          ? html`<p>現在 ${user.login} でログイン中</p>`
+          : ''}
+      `,
+    ),
+  );
+});
+
+module.exports = app;

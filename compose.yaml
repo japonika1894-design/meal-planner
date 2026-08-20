@@ -13,6 +13,14 @@ services:
     build:
       context: "."
       dockerfile: "db.Dockerfile"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: meal-planner
+    volumes:
+      - meal-planner-data:/var/lib/postgresql/data
 
 volumes:
   node_modules:
+  meal-planner-data:
+    external: true
